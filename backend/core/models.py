@@ -3,10 +3,14 @@ from django.contrib.contenttypes.fields import GenericForeignKey ,GenericRelatio
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-# Create your models here.
 
 
 class Profile(models.Model):
+    '''
+    Added features on django User Model
+
+        Chef_mode : to be activated for intrusted chefs
+    '''
 
     user_id = models.OneToOneField(User, related_name='Profile', on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to='profil_pic', blank=True)
@@ -17,6 +21,13 @@ class Profile(models.Model):
 
 
 class Chef(models.Model):
+    '''
+    Added features on django User Model again (Merge with profile if you need)
+
+        Extra fields for chef profiles.
+
+        is_verified : To be verified by admin
+    '''
     
     user_id = models.OneToOneField(Profile, on_delete=models.CASCADE)
     description = models.CharField(max_length = 500, blank=True)
@@ -24,10 +35,16 @@ class Chef(models.Model):
     photos = models.ManyToManyField('Photo', related_name='chefs', blank=True)
 
 class Photo(models.Model):
+    '''
+    Generic model for photos
+    '''
     photo = models.ImageField(upload_to='photos/')
     caption = models.CharField(max_length=255, blank=True)
 
 class Like(models.Model):
+    '''
+    Like model is generic model, any other model can have like functinality by inheriting folling model, see documentation
+    '''
     
     # Generic Foreign Key to associate comments with different models
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -53,12 +70,14 @@ class Like(models.Model):
 
 class Likable(models.Model):
     likes = GenericRelation(Like)
-
     class Meta:
         abstract = True
 
 
 class Review(Likable):
+    '''
+    Review model is generic model, any other model can have review/comment functinality by inheriting folling model, see documentation
+    '''
 
     # Generic Foreign Key to associate comments with different models
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -76,6 +95,5 @@ class Review(Likable):
 
 class Reviewable(models.Model):
     comments = GenericRelation(Review)
-
     class Meta:
         abstract = True
