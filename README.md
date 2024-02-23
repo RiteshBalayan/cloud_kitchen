@@ -1,6 +1,6 @@
 # Cloud Kitchen Platform
 
-This project is a cloud kitchen platform designed to streamline the operations of cloud kitchens. It features a robust backend built with Django and a sleek, user-friendly frontend developed using React.
+This project is a cloud kitchen platform designed to streamline the operations of cloud kitchens. It features a robust backend built with Django and a sleek, user-friendly frontend developed using React .
 
 ## Overview
 
