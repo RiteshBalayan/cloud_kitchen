@@ -9,7 +9,7 @@ class Profile(models.Model):
     '''
     Added features on django User Model
 
-        Chef_mode : to be activated for intrusted chefs
+        Chef_mode : to be activated for intrested chefs
     '''
 
     user_id = models.OneToOneField(User, related_name='Profile', on_delete=models.CASCADE)
@@ -29,10 +29,13 @@ class Chef(models.Model):
         is_verified : To be verified by admin
     '''
     
-    user_id = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(Profile, related_name='Profile', on_delete=models.CASCADE)
     description = models.CharField(max_length = 500, blank=True)
     is_verified = models.BooleanField(default=False)
     photos = models.ManyToManyField('Photo', related_name='chefs', blank=True)
+
+    def __str__(self):
+        return f" Chef :  {self.user_id.user_id.username}"
 
 class Photo(models.Model):
     '''

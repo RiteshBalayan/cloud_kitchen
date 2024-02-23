@@ -6,6 +6,7 @@ import { AppContextProvider } from "./context/AppContext.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppContextProvider>
+    {/* Components wrapped in Context don't need seprate props if context provides it. */}
       <App />
     </AppContextProvider>
   </React.StrictMode>

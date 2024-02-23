@@ -11,12 +11,16 @@ class Kitchen(models.Model):
     is_verified = models.BooleanField(default=False)  
     chef = models.ForeignKey(Chef, on_delete=models.CASCADE, related_name='kitchens')  
 
+    def __str__(self):
+        return f" {self.name} : Kitchen of  ({self.chef.user_id.user_id.username})"
+
 class Dish(models.Model):  
     '''
     Dishes to be added by chef and verify by admin
 
     total_order should be appended +1 with each succesful order
     '''
+    name = models.TextField(blank=True)
     chef = models.ForeignKey(Chef, on_delete=models.CASCADE, related_name='dishes')
     description = models.TextField()  
     ingredients = models.TextField()
@@ -25,6 +29,9 @@ class Dish(models.Model):
     is_verified = models.BooleanField(default=False)  
     price = models.FloatField()
     total_orders = models.IntegerField()
+
+    def __str__(self):
+        return f" {self.name} : Dish by ({self.chef.user_id.user_id.username})"
 
 class Inventory(models.Model):
     '''
@@ -46,6 +53,9 @@ class Inventory(models.Model):
     delivery_method = models.CharField(max_length=10, choices=DELIVERY_CHOICES, default='Delivery')  
     delivery_radius = models.FloatField()  
 
+    def __str__(self):
+        return f" {self.quantity}: {self.dish.name}, available at Kitchen ({self.kitchen.name})"
+
 class Order(models.Model):
     '''
     Order is initated by user from inventory
@@ -63,3 +73,5 @@ class Order(models.Model):
     is_customer_delivered = models.BooleanField(default=False)  
     is_chef_delivered = models.BooleanField(default=False)  
 
+    def __str__(self):
+        return f"{self.customer.user_id.username} order of {self.inventory.dish.name}"

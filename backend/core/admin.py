@@ -1,14 +1,12 @@
 from django.contrib import admin
-from .models import Profile, Chef, Photo, Like, Review  # Import your models here
+from .models import Profile, Chef, Photo, Like, Review  
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['user_id', 'chef_mode']  # Customize as needed
     search_fields = ['user_id']
 
 @admin.register(Chef)
 class ChefAdmin(admin.ModelAdmin):
-    list_display = ['user_id', 'is_verified']  # Assuming you renamed 'verification' to 'is_verified'
     search_fields = ['user_id']
 
 @admin.register(Photo)
