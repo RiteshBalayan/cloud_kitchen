@@ -2,6 +2,9 @@ from rest_framework import generics
 from .models import User, Profile, Chef, Photo
 from .serializers import UserSerializer, ProfileSerializer, ChefSerializer, PhotoSerializer
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()

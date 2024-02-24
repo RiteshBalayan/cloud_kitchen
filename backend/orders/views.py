@@ -1,9 +1,10 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from .models import Inventory
 from .serializers import InventorySerializer
 
 class InventoryList(generics.ListCreateAPIView):
     serializer_class = InventorySerializer
+    permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
         """
