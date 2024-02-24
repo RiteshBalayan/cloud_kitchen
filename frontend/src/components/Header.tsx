@@ -45,6 +45,9 @@ const Header = () => {
       >
         <div className="main-bar clearfix ">
           <div className="container clearfix">
+            
+
+            {/* Logo  */}
             <div className="logo-header mostion">
               <div className="logo-header mostion">
                 {headerClass ? (
@@ -67,6 +70,9 @@ const Header = () => {
               </div>
             </div>
 
+            
+
+            {/* Button for small screen */}
             <button
               className={`navbar-toggler collapsed navicon justify-content-end ${
                 headerSidebar ? "open" : ""
@@ -80,6 +86,8 @@ const Header = () => {
               <span></span>
               <span></span>
             </button>
+
+
 
             <div className="extra-nav">
               <div className="extra-cell">
@@ -110,6 +118,9 @@ const Header = () => {
                         opacity: cart ? "1" : "0",
                       }}
                     >
+
+
+                      {/* HardCodded Stupid Cart */}
                       <ul
                         className="dropdown-menu cart-list"
                         style={{
@@ -255,12 +266,18 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
+
+
+
+
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
 
+
+            
             <div
               className={`header-nav navbar-collapse justify-content-end ${
                 headerSidebar ? "show" : ""
@@ -270,9 +287,12 @@ const Header = () => {
               {" "}
               <Menu />
             </div>
+
+
           </div>
         </div>
       </div>
+
     </header>
   );
 };

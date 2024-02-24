@@ -18,10 +18,10 @@ const MenuSlider = () => {
           nextEl: ".img-button-next",
         }}
         breakpoints={{
-          1200: { slidesPerView: 4 },
-          991: { slidesPerView: 3 },
-          575: { slidesPerView: 2 },
-          240: { slidesPerView: 1 },
+          1200: { slidesPerView: 4.5 },
+          991: { slidesPerView: 4.5 },
+          575: { slidesPerView: 4.5 },
+          240: { slidesPerView: 4.5 },
         }}
       >
         {MenuSliderArr.map(({ img, name, price }, ind) => (
