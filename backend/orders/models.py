@@ -12,7 +12,7 @@ class Kitchen(models.Model):
     chef = models.ForeignKey(Chef, on_delete=models.CASCADE, related_name='kitchens')  
 
     def __str__(self):
-        return f" {self.name} : Kitchen of  ({self.chef.user_id.user_id.username})"
+        return f" {self.name} : Kitchen of  ({self.chef.user_id.user_id.first_name})"
 
 class Dish(models.Model):  
     '''
@@ -31,7 +31,7 @@ class Dish(models.Model):
     total_orders = models.IntegerField()
 
     def __str__(self):
-        return f" {self.name} : Dish by ({self.chef.user_id.user_id.username})"
+        return f" {self.name} : Dish by ({self.chef.user_id.user_id.first_name})"
 
 class Inventory(models.Model):
     '''
@@ -74,4 +74,4 @@ class Order(models.Model):
     is_chef_delivered = models.BooleanField(default=False)  
 
     def __str__(self):
-        return f"{self.customer.user_id.username} order of {self.inventory.dish.name}"
+        return f"{self.customer.user_id.first_name} order of {self.inventory.dish.name}"

@@ -8,7 +8,7 @@ const MenuSlider = () => {
     <div className="swiper-btn-lr">
       <Swiper
         className="swiper portfolio-swiper"
-        slidesPerView={4}
+        slidesPerView={5}
         spaceBetween={30}
         loop={true}
         modules={[Navigation]}
